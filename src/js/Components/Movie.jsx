@@ -1,13 +1,15 @@
+import React, { useContext } from "react";
+import { GlobalContext } from "../Context/GlobalState";
 import { RiCameraOffLine } from "react-icons/ri";
-import { TbHeartPlus } from "react-icons/tb";
+import { TbHeartPlus, TbHeartMinus } from "react-icons/tb";
 import { IoCalendarOutline } from "react-icons/io5";
 import { CiStar } from "react-icons/ci";
 
 const Movie = ({ movie }) => {
-  console.log("Movie:", movie);
-  const addToFavorites = () => {
-    console.log("Add to favorites:", movie);
-  };
+  const { addToWatchlist, watchlist, removeFromWatchlist } =
+    useContext(GlobalContext);
+
+  let storedMovie = watchlist.find((o) => o.id === movie.id);
 
   return (
     <div className="movie-card" key={movie.id}>
@@ -24,9 +26,18 @@ const Movie = ({ movie }) => {
           </div>
         )}
         <div className="overlay">
-          <button className="favorites" onClick={addToFavorites}>
-            <TbHeartPlus />
-          </button>
+          {!storedMovie ? (
+            <button className="favorites" onClick={() => addToWatchlist(movie)}>
+              <TbHeartPlus />
+            </button>
+          ) : (
+            <button
+              className="favorites"
+              onClick={() => removeFromWatchlist(movie.id)}
+            >
+              <TbHeartMinus />
+            </button>
+          )}
         </div>
       </div>
       <div className="content">

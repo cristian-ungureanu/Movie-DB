@@ -1,20 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./Components/Header";
-import { Browse } from "./Components/Browse";
-import { Favorites } from "./Components/Favorites";
+import { BrowserRouter as Router } from "react-router-dom";
 import { createRoot } from "react-dom/client";
-
 import { GlobalProvider } from "./Context/GlobalState";
+import AppWrapper from "./AppWrapper";
 
 const App = () => {
   return (
     <GlobalProvider>
       <Router>
-        <Routes>
-          <Route path="/" element={<Browse />} />
-          <Route path="/favorites" element={<Favorites />} />
-        </Routes>
+        <AppWrapper />
       </Router>
     </GlobalProvider>
   );

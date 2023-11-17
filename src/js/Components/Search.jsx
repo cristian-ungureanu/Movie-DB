@@ -1,9 +1,20 @@
 import React, { useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { GlobalContext } from "../Context/GlobalState";
 import { FaSearch, FaTimes } from "react-icons/fa";
 
-const Search = ({ setMovies }) => {
-  const { query, setQuery, setIsLoading } = useContext(GlobalContext);
+const Search = () => {
+  const {
+    query,
+    setQuery,
+    setIsLoading,
+    page,
+    setPage,
+    setTotalPages,
+    setMovies,
+    watchlist,
+  } = useContext(GlobalContext);
+  const location = useLocation();
 
   let debounceTimer = null;
 
@@ -31,13 +42,15 @@ const Search = ({ setMovies }) => {
 
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false`,
+          `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&page=${page}`,
           options,
         );
 
         const json = await response.json();
 
         if (!json.errors) {
+          console.log(json);
+          setTotalPages(json.total_pages > 500 ? 500 : json.total_pages);
           setMovies(json.results);
         } else {
           // TODO: Handle errors
@@ -50,20 +63,38 @@ const Search = ({ setMovies }) => {
       }
     }
 
+    const searchInWatchlist = () => {
+      if (!watchlist.length) {
+        setMovies([]);
+        return;
+      }
+      const results = watchlist.filter((movie) =>
+        movie.title.toLowerCase().includes(query.toLowerCase()),
+      );
+      setPage(1);
+      setTotalPages(Math.ceil(results.length / 20));
+      setMovies(results);
+    };
+
     // Clear the previous timeout to avoid unnecessary API calls
     clearTimeout(debounceTimer);
 
     // Set a new timeout to call requestMovies after a delay
     debounceTimer = setTimeout(() => {
+      if (location.pathname === "/favorites") {
+        searchInWatchlist();
+        return;
+      }
       requestMovies();
     }, 300);
 
     // Cleanup function to clear the timeout on searchValue change
     return () => clearTimeout(debounceTimer);
-  }, [query]);
+  }, [query, page]);
 
   const onChange = (e) => {
     e.preventDefault();
+    setPage(1);
     setQuery(e.target.value);
   };
 

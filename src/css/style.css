@@ -10,6 +10,10 @@ ul {
   margin: 0;
 }
 
+body {
+  background-color: #f1f1f1;
+}
+
 body,
 ul {
   padding: 0;
@@ -27,21 +31,6 @@ h6 {
   overflow-wrap: break-word;
 }
 
-header {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: rgb(255, 255, 255);
-  min-height: 70px;
-}
-
-header.transparent {
-  min-height: 50px;
-  background-color: rgba(255, 255, 255, 0.6);
-}
-
 .container {
   width: 100%;
   margin-left: auto;
@@ -54,10 +43,9 @@ header.transparent {
 }
 
 .inner-content {
-  margin-top: 100px;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 40px;
 }
 
 .search {
@@ -75,10 +63,11 @@ header.transparent {
 
 #search {
   padding: 15px 35px;
-  border-radius: 20px;
+  border-radius: 5px;
   border: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   width: 100%;
+  border-radius: 30px;
 }
 
 .clear-icon {
@@ -115,16 +104,11 @@ header.transparent {
 .movie-card {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  position: relative;
-  top: 0;
-  left: 0;
   display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  border: 1px solid #e3e3e3;
-  border-radius: 8px;
+  flex-direction: column;
   overflow: hidden;
-  margin-top: 30px;
+  align-content: flex-start;
+  border-radius: 8px;
   width: 100%;
 }
 
@@ -184,7 +168,7 @@ header.transparent {
   color: #717171;
 }
 .movie-card .content {
-  width: 100%;
+  max-width: 100%;
   padding: 26px 10px 12px;
   position: relative;
   white-space: normal;
@@ -224,30 +208,80 @@ header.transparent {
 }
 
 .hero {
-  height: 300px;
   background-image: url(../images/hero.jpg);
   background-size: cover;
   animation: slidein 100s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+}
+
+.hero-content {
   position: relative;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
+  color: #fff;
 }
 
 .hero .overlay {
   background-color: rgba(0, 0, 0, 0.8);
-  height: 100%;
-  width: 100%;
-  display: flex;
 }
 
 .hero .search {
+  max-width: 800px;
   width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+}
+
+.controls {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.tab-item {
+  padding: 20px 30px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 15px;
+  border-radius: 30px;
+  color: #000;
+}
+
+.tab-item.active {
+  color: #fff;
+  background-color: #000;
+}
+
+.navigation {
+  display: flex;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+.navigation button {
+  border: none;
+  background: none;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  height: 100%;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 18px;
 }
 
 @media (min-width: 600px) {
@@ -255,17 +289,17 @@ header.transparent {
     flex-direction: row;
   }
   .movie-card {
-    max-width: 220px;
+    max-width: 260px;
   }
 }
 
 @media (min-width: 768px) {
-  .movies-container {
-    justify-content: space-between;
-  }
 }
 
 @media (min-width: 992px) {
+  .movies-container {
+    justify-content: flex-start;
+  }
 }
 
 @media (min-width: 1200px) {

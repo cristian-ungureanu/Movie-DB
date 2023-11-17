@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
+import { useLocation } from "react-router-dom";
 import { GlobalContext } from "../Context/GlobalState";
-import Movie from "../Components/Movie";
 import Mock from "../Components/Mock";
-import Search from "./Search";
-import Hero from "./Hero";
+import Results from "../Components/Results";
 
 export const Browse = () => {
-  const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
-  const { query, isLoading, setIsLoading } = useContext(GlobalContext);
-
+  const { query, isLoading, setIsLoading, setTotalPages, page, setMovies } =
+    useContext(GlobalContext);
+  const location = useLocation();
   useEffect(() => {
     if (query) {
       return;
@@ -36,6 +34,7 @@ export const Browse = () => {
         const json = await response.json();
 
         if (!json.errors) {
+          setTotalPages(json.total_pages > 500 ? 500 : json.total_pages);
           setMovies(json.results);
         } else {
           // TODO handle errors
@@ -50,29 +49,7 @@ export const Browse = () => {
     }
 
     requestMovies();
-  }, [page, query]);
+  }, [page, query, location]);
 
-  return (
-    <>
-      <Hero setMovies={setMovies} />
-      <div className="container">
-        <div className="inner-content">
-          {isLoading ? (
-            <Mock />
-          ) : (
-            <div className="movies-container">
-              {movies && movies.length > 0 ? (
-                movies.map((movie) => <Movie movie={movie} key={movie.id} />)
-              ) : (
-                <div className="no-results">
-                  There are no movies to display. Try searching for something
-                  else.
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
-    </>
-  );
+  return <>{isLoading ? <Mock /> : <Results />}</>;
 };

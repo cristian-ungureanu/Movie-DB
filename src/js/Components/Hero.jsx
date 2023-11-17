@@ -6,7 +6,13 @@ function Hero({ setMovies }) {
     <div className="hero">
       <div className="overlay">
         <div className="container">
-          <Search setMovies={setMovies} />
+          <div className="hero-content">
+            <div className="hero-text">
+              <h1>Cinematic Adventures Await</h1>
+              <p> Explore, Watch, and Curate Your Movie Watchlist!</p>
+            </div>
+            <Search setMovies={setMovies} />
+          </div>
         </div>
       </div>
     </div>
