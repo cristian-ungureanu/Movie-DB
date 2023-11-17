@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import { GlobalContext } from "../Context/GlobalState";
 import { RiCameraOffLine } from "react-icons/ri";
 import { TbHeartPlus, TbHeartMinus } from "react-icons/tb";
@@ -9,7 +9,10 @@ const Movie = ({ movie, showToastMessage }) => {
   const { addToWatchlist, watchlist, removeFromWatchlist } =
     useContext(GlobalContext);
 
-  let storedMovie = watchlist.find((o) => o.id === movie.id);
+  const storedMovie = useMemo(
+    () => watchlist.find((o) => o.id === movie.id),
+    [watchlist, movie.id],
+  );
 
   return (
     <div className="movie-card" key={movie.id}>
@@ -59,10 +62,11 @@ const Movie = ({ movie, showToastMessage }) => {
         </div>
         <div className="rating">
           <CiStar />
-          {movie.vote_average}
+          {Math.round(movie.vote_average * 10) / 10}
         </div>
       </div>
     </div>
   );
 };
+
 export default Movie;

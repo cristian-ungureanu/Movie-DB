@@ -20,7 +20,7 @@ const Search = () => {
   let debounceTimer = null;
 
   useEffect(() => {
-    // Cleanup function to clear the timeout on component unmount
+    document.getElementById("search").focus();
     return () => clearTimeout(debounceTimer);
   }, []);
 
@@ -98,6 +98,7 @@ const Search = () => {
         value={query}
         onChange={onChange}
         placeholder="Search for a movie"
+        aria-label="Search for a movie"
       />
       {query && (
         <button className="clear-icon" onClick={() => setQuery("")}>

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
 import classNames from "classnames";
 
 const Toast = ({ message, showToast, hideToast }) => {
@@ -22,12 +21,6 @@ const Toast = ({ message, showToast, hideToast }) => {
       <div className="toast-content">{message}</div>
     </div>
   );
-};
-
-Toast.propTypes = {
-  message: PropTypes.string.isRequired,
-  showToast: PropTypes.bool.isRequired,
-  hideToast: PropTypes.func.isRequired,
 };
 
 export default Toast;

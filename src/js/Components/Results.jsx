@@ -22,7 +22,7 @@ const Results = () => {
   if (errorMessage) {
     return (
       <div className="error-message">
-        <AiFillWarning />
+        <AiFillWarning style={{ fontSize: "1.2em" }} />
         {errorMessage}
       </div>
     );
@@ -30,7 +30,7 @@ const Results = () => {
 
   return (
     <div className="movies-container">
-      {movies && movies.length > 0 ? (
+      {movies?.length > 0 ? (
         movies.map((movie) => (
           <Movie
             movie={movie}
