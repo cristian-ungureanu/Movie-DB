@@ -5,7 +5,7 @@ import { TbHeartPlus, TbHeartMinus } from "react-icons/tb";
 import { IoCalendarOutline } from "react-icons/io5";
 import { CiStar } from "react-icons/ci";
 
-const Movie = ({ movie }) => {
+const Movie = ({ movie, showToastMessage }) => {
   const { addToWatchlist, watchlist, removeFromWatchlist } =
     useContext(GlobalContext);
 
@@ -27,13 +27,24 @@ const Movie = ({ movie }) => {
         )}
         <div className="overlay">
           {!storedMovie ? (
-            <button className="favorites" onClick={() => addToWatchlist(movie)}>
+            <button
+              className="favorites"
+              onClick={() => {
+                addToWatchlist(movie);
+                showToastMessage("The movie was added to your favorites list.");
+              }}
+            >
               <TbHeartPlus />
             </button>
           ) : (
             <button
               className="favorites"
-              onClick={() => removeFromWatchlist(movie.id)}
+              onClick={() => {
+                removeFromWatchlist(movie.id);
+                showToastMessage(
+                  "The movie was removed from your favorites list.",
+                );
+              }}
             >
               <TbHeartMinus />
             </button>
