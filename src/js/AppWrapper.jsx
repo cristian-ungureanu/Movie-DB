@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Routes, Route } from "react-router-dom";
+
 import { GlobalContext } from "./Context/GlobalState";
-import { Routes, Route } from "react-router-dom"; // Use Routes instead of BrowserRouter
 import { Browse } from "./Components/Browse";
 import { Favorites } from "./Components/Favorites";
 import Hero from "./Components/Hero";
@@ -9,8 +9,9 @@ import Controls from "./Components/Controls";
 
 const AppWrapper = () => {
   const location = useLocation();
-  const { setQuery, setPage } = useContext(GlobalContext);
+  const { setQuery, setPage, setErrorMessage } = useContext(GlobalContext);
   useEffect(() => {
+    setErrorMessage("");
     setPage(1);
     setQuery("");
   }, [location]);

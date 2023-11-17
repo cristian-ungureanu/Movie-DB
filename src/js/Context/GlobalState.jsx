@@ -11,6 +11,7 @@ const initialState = {
     ? JSON.parse(localStorage.getItem("watchlist"))
     : [],
   movies: [],
+  errorMessage: "",
 };
 
 // create context
@@ -53,6 +54,10 @@ export const GlobalProvider = (props) => {
     dispatch({ type: "SET_MOVIES", payload: movies });
   };
 
+  const setErrorMessage = (errorMessage) => {
+    dispatch({ type: "SET_ERROR_MESSAGE", payload: errorMessage });
+  };
+
   return (
     <GlobalContext.Provider
       value={{
@@ -69,6 +74,8 @@ export const GlobalProvider = (props) => {
         removeFromWatchlist,
         movies: state.movies,
         setMovies,
+        errorMessage: state.errorMessage,
+        setErrorMessage,
       }}
     >
       {props.children}

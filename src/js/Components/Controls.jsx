@@ -10,7 +10,7 @@ import {
 } from "react-icons/fi";
 
 const Controls = () => {
-  const { page, setPage, totalPages } = useContext(GlobalContext);
+  const { page, setPage, totalPages, errorMessage } = useContext(GlobalContext);
   const location = useLocation();
   const pages = ["/", "/favorites"];
 
@@ -32,7 +32,7 @@ const Controls = () => {
       <div className="navigation">
         <button
           className="previous"
-          disabled={page === 1}
+          disabled={errorMessage || page === 1}
           onClick={() => setPage(1)}
           title="First Page"
         >
@@ -40,21 +40,21 @@ const Controls = () => {
         </button>
         <button
           className="previous"
-          disabled={page === 1}
+          disabled={errorMessage || page === 1}
           onClick={() => setPage(page - 1)}
         >
           <FiChevronLeft />
         </button>
         <button
           className="next"
-          disabled={page === totalPages}
+          disabled={errorMessage || page === totalPages}
           onClick={() => setPage(page + 1)}
         >
           <FiChevronRight />
         </button>
         <button
           className="next"
-          disabled={page === totalPages}
+          disabled={errorMessage || page === totalPages}
           onClick={() => setPage(totalPages)}
         >
           <FiChevronsRight />

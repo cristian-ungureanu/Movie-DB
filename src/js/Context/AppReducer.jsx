@@ -37,6 +37,11 @@ const AppReducer = (state, action) => {
         ...state,
         movies: action.payload,
       };
+    case "SET_ERROR_MESSAGE":
+      return {
+        ...state,
+        errorMessage: action.payload,
+      };
     default:
       return state;
   }

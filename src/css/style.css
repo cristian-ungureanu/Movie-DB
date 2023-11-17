@@ -302,6 +302,19 @@ h6 {
   opacity: 1;
 }
 
+.error-message {
+  color: #ff0000;
+  font-size: 16px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  gap: 5px;
+}
+
 @media (min-width: 600px) {
   .movies-container {
     flex-direction: row;

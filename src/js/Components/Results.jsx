@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import { GlobalContext } from "../Context/GlobalState";
+import { AiFillWarning } from "react-icons/ai";
+
 import Movie from "./Movie";
 import Toast from "./Toast";
 
 const Results = () => {
-  const { movies } = useContext(GlobalContext);
+  const { movies, errorMessage } = useContext(GlobalContext);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
@@ -16,6 +18,15 @@ const Results = () => {
   const hideToast = () => {
     setShowToast(false);
   };
+
+  if (errorMessage) {
+    return (
+      <div className="error-message">
+        <AiFillWarning />
+        {errorMessage}
+      </div>
+    );
+  }
 
   return (
     <div className="movies-container">
