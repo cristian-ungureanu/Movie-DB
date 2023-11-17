@@ -11,6 +11,7 @@ import {
 
 const Controls = () => {
   const { page, setPage, totalPages, errorMessage } = useContext(GlobalContext);
+  console.log(totalPages);
   const location = useLocation();
   const pages = ["/", "/favorites"];
 

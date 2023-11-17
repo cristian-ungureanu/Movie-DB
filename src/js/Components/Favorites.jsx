@@ -18,13 +18,15 @@ export const Favorites = () => {
     const indexOfLastPost = page * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = watchlist.slice(indexOfFirstPost, indexOfLastPost);
-    setTotalPages(Math.ceil(watchlist.length / postsPerPage));
+    const totalPages = Math.ceil(watchlist.length / postsPerPage);
+    setTotalPages(totalPages > 0 ? totalPages : 1);
     setMovies(currentPosts);
   }, [query, page, watchlist]);
 
   useEffect(() => {
     if (location.pathname === "/favorites") {
-      setTotalPages(Math.ceil(watchlist.length / postsPerPage));
+      const totalPages = Math.ceil(watchlist.length / postsPerPage);
+      setTotalPages(totalPages > 0 ? totalPages : 1);
     }
   }, [location]);
 
