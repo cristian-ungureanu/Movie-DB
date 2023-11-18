@@ -6,7 +6,8 @@ A frontend interface for TMDB API that allows you to browse the most popular mov
 | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|
 |<img width="1680" alt="Screenshot 2023-11-18 at 15 17 31" src="https://github.com/cristian-ungureanu/Movie-DB/assets/9929553/f1bd3c51-21e9-4142-b2ce-b623a337fb1c"> Browse Movies|  <img width="1677" alt="Screenshot 2023-11-18 at 15 19 32" src="https://github.com/cristian-ungureanu/Movie-DB/assets/9929553/4e834877-7b23-4701-a838-5f922ec19646"> Loading state|<img width="1680" alt="Screenshot 2023-11-18 at 15 20 13" src="https://github.com/cristian-ungureanu/Movie-DB/assets/9929553/4a46ea17-57a2-4ab2-9233-64e57c9931ed"> No results|
-|<img width="1671" alt="Screenshot 2023-11-18 at 15 20 39" src="https://github.com/cristian-ungureanu/Movie-DB/assets/9929553/eaeff99b-7fb8-47be-b299-a8d33f73946b"> Add to favorites toast confiramtion|  <img width="1680" alt="Screenshot 2023-11-18 at 15 22 02" src="https://github.com/cristian-ungureanu/Movie-DB/assets/9929553/5d0ef460-c331-44a0-972d-a1b68a0f3887"> Invalid API key|<img width="491" alt="Screenshot 2023-11-18 at 15 32 04" src="https://github.com/cristian-ungureanu/Movie-DB/assets/9929553/f33849ec-c94d-42e8-9f9e-c61bac39d79c"> Mobile view
+|<img width="1671" alt="Screenshot 2023-11-18 at 15 20 39" src="https://github.com/cristian-ungureanu/Movie-DB/assets/9929553/eaeff99b-7fb8-47be-b299-a8d33f73946b"> Add to favorites toast confiramtion|  <img width="1680" alt="Screenshot 2023-11-18 at 15 22 02" src="https://github.com/cristian-ungureanu/Movie-DB/assets/9929553/5d0ef460-c331-44a0-972d-a1b68a0f3887"> Invalid API key|<img width="376" alt="Screenshot 2023-11-18 at 15 55 57" src="https://github.com/cristian-ungureanu/Movie-DB/assets/9929553/d8590daf-e84e-4bf6-9acd-a4612f71a48c"> Mobile view
+
 |
 
 ## Installation and Setup Instructions
