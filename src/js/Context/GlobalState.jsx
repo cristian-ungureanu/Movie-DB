@@ -2,10 +2,15 @@ import React, { createContext, useReducer, useEffect } from "react";
 import AppReducer from "./AppReducer";
 
 // initial state
+const getPageFromURL = () => {
+  const page = new URLSearchParams(window.location.search).get("page");
+  return page ? parseInt(page, 10) : 1;
+};
+
 const initialState = {
   query: "",
   isLoading: false,
-  page: 1,
+  page: getPageFromURL(),
   totalPages: 0,
   watchlist: localStorage.getItem("watchlist")
     ? JSON.parse(localStorage.getItem("watchlist"))

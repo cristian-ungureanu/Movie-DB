@@ -14,16 +14,25 @@ const Controls = () => {
   const location = useLocation();
   const pages = ["/", "/favorites"];
 
+  const updatePage = (page) => {
+    setPage(page);
+    //update url page param
+    const url = new URL(window.location.href);
+    url.searchParams.set("page", page);
+    window.history.pushState({}, "", url);
+  };
+
   return (
     <div className="controls">
       <div className="tabs">
-        {pages.map((page) => (
+        {pages.map((currentPage) => (
           <Link
-            key={page}
+            key={currentPage}
             className={
-              location.pathname === page ? "tab-item active" : "tab-item"
+              location.pathname === currentPage ? "tab-item active" : "tab-item"
             }
-            to={page}
+            to={currentPage}
+            onClick={() => setPage(1)}
           >
             {page === "/" ? "Browse" : "Favorites"}
           </Link>
@@ -33,7 +42,7 @@ const Controls = () => {
         <button
           className="previous"
           disabled={errorMessage || page === 1}
-          onClick={() => setPage(1)}
+          onClick={() => updatePage(1)}
           title="First Page"
         >
           <FiChevronsLeft />
@@ -41,21 +50,21 @@ const Controls = () => {
         <button
           className="previous"
           disabled={errorMessage || page === 1}
-          onClick={() => setPage(page - 1)}
+          onClick={() => updatePage(page - 1)}
         >
           <FiChevronLeft />
         </button>
         <button
           className="next"
           disabled={errorMessage || page === totalPages}
-          onClick={() => setPage(page + 1)}
+          onClick={() => updatePage(page + 1)}
         >
           <FiChevronRight />
         </button>
         <button
           className="next"
           disabled={errorMessage || page === totalPages}
-          onClick={() => setPage(totalPages)}
+          onClick={() => updatePage(totalPages)}
         >
           <FiChevronsRight />
         </button>

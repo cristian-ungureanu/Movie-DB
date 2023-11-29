@@ -9,10 +9,9 @@ import Controls from "./Components/Controls";
 
 const AppWrapper = () => {
   const location = useLocation();
-  const { setQuery, setPage, setErrorMessage } = useContext(GlobalContext);
+  const { setQuery, setErrorMessage } = useContext(GlobalContext);
   useEffect(() => {
     setErrorMessage("");
-    setPage(1);
     setQuery("");
   }, [location]);
 
