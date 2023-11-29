@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { GlobalContext } from "../Context/GlobalState";
 import Mock from "../Components/Mock";
 import Results from "../Components/Results";
+import { MOVIE_DISCOVER_ENDPOINT } from "../config";
 
 export const Browse = () => {
   const {
@@ -25,9 +26,7 @@ export const Browse = () => {
       setErrorMessage("");
 
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.VITE_REACT_APP_TMDB_KEY}&include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`,
-        );
+        const response = await fetch(`${MOVIE_DISCOVER_ENDPOINT}&page=${page}`);
         const json = await response.json();
 
         if (!response.ok) {

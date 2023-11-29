@@ -1,12 +1,12 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import AppReducer from "./AppReducer";
 
-// initial state
-const getPageFromURL = () => {
+export const getPageFromURL = () => {
   const page = new URLSearchParams(window.location.search).get("page");
   return page ? parseInt(page, 10) : 1;
 };
 
+// initial state
 const initialState = {
   query: "",
   isLoading: false,

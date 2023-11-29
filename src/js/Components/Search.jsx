@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { GlobalContext } from "../Context/GlobalState";
 import { FaSearch, FaTimes } from "react-icons/fa";
+import { MOVIE_SEARCH_ENDPOINT } from "../config";
+import { getPageFromURL } from "../Context/GlobalState";
 
 const Search = () => {
   const {
@@ -35,7 +37,7 @@ const Search = () => {
 
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/search/movie?api_key=${process.env.VITE_REACT_APP_TMDB_KEY}&query=${query}&include_adult=false&page=${page}`,
+          `${MOVIE_SEARCH_ENDPOINT}&query=${query}&page=${page}`,
         );
         const json = await response.json();
 
@@ -84,7 +86,8 @@ const Search = () => {
 
   const onChange = (e) => {
     e.preventDefault();
-    setPage(1);
+    const cunrrentPage = e.target.value !== "" ? 1 : getPageFromURL();
+    setPage(cunrrentPage);
     setQuery(e.target.value);
   };
 
@@ -101,7 +104,14 @@ const Search = () => {
         aria-label="Search for a movie"
       />
       {query && (
-        <button className="clear-icon" onClick={() => setQuery("")}>
+        <button
+          className="clear-icon"
+          onClick={() => {
+            const cunrrentPage = getPageFromURL() || 1;
+            setPage(cunrrentPage);
+            setQuery("");
+          }}
+        >
           <FaTimes />
         </button>
       )}
