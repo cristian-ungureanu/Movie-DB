@@ -1,0 +1,32 @@
+.search {
+    align-items: center;
+    position: relative;
+}
+  
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    }
+
+#search {
+    padding: 15px 35px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: $base-shadow;
+    width: 100%;
+    border-radius: 30px;
+}
+
+.clear-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    cursor: pointer;
+    border: none;
+    background: none;
+}

@@ -4,6 +4,7 @@ import { createRoot } from "react-dom/client";
 
 import { GlobalProvider } from "./Context/GlobalState";
 import AppWrapper from "./AppWrapper";
+import "../scss/style.scss";
 
 const App = () => {
   return (
