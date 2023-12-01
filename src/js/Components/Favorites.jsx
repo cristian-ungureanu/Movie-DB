@@ -5,8 +5,15 @@ import Results from "../Components/Results";
 import Mock from "./Mock";
 
 export const Favorites = () => {
-  const { watchlist, setMovies, isLoading, page, setTotalPages, query } =
-    useContext(GlobalContext);
+  const {
+    watchlist,
+    setMovies,
+    isLoading,
+    page,
+    setTotalPages,
+    query,
+    categories,
+  } = useContext(GlobalContext);
 
   const location = useLocation();
   const postsPerPage = 20;
@@ -17,11 +24,17 @@ export const Favorites = () => {
     }
     const indexOfLastPost = page * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = watchlist.slice(indexOfFirstPost, indexOfLastPost);
-    const totalPages = Math.ceil(watchlist.length / postsPerPage);
+    let currentPosts = watchlist.slice(indexOfFirstPost, indexOfLastPost);
+    let totalPages = Math.ceil(watchlist.length / postsPerPage);
+    if (categories.length > 0) {
+      currentPosts = currentPosts.filter((movie) =>
+        movie.genre_ids.some((genre) => categories.includes(genre)),
+      );
+      totalPages = Math.ceil(currentPosts.length / postsPerPage);
+    }
     setTotalPages(totalPages > 0 ? totalPages : 1);
     setMovies(currentPosts);
-  }, [query, page, watchlist]);
+  }, [query, page, watchlist, categories]);
 
   useEffect(() => {
     if (location.pathname === "/favorites") {

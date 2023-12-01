@@ -23,7 +23,7 @@ const AppWrapper = () => {
       <div className="container">
         <div className="inner-content">
           <Controls />
-          {location.pathname === "/" && <Filters />}
+          <Filters />
           <Routes>
             <Route path="/" element={<Browse />} />
             <Route path="/favorites" element={<Favorites />} />
