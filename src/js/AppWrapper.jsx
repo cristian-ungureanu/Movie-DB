@@ -11,7 +11,7 @@ import Filters from "./Components/Filters";
 
 const AppWrapper = () => {
   const location = useLocation();
-  const { setQuery, setErrorMessage } = useContext(GlobalContext);
+  const { setQuery, setErrorMessage, movies } = useContext(GlobalContext);
   useEffect(() => {
     setErrorMessage("");
     setQuery("");
@@ -28,9 +28,7 @@ const AppWrapper = () => {
             <Route path="/" element={<Browse />} />
             <Route path="/favorites" element={<Favorites />} />
           </Routes>
-          <div className="footer">
-            <Pagination />
-          </div>
+          <div className="footer">{movies.length !== 0 && <Pagination />}</div>
         </div>
       </div>
     </>
