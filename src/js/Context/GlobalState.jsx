@@ -17,6 +17,10 @@ const initialState = {
     : [],
   movies: [],
   errorMessage: "",
+  categories: [],
+  showCategories: localStorage.getItem("showCategories")
+    ? JSON.parse(localStorage.getItem("showCategories"))
+    : false,
 };
 
 // create context
@@ -28,6 +32,10 @@ export const GlobalProvider = (props) => {
 
   useEffect(() => {
     localStorage.setItem("watchlist", JSON.stringify(state.watchlist));
+    localStorage.setItem(
+      "showCategories",
+      JSON.stringify(state.showCategories),
+    );
   }, [state]);
 
   // actions
@@ -63,6 +71,14 @@ export const GlobalProvider = (props) => {
     dispatch({ type: "SET_ERROR_MESSAGE", payload: errorMessage });
   };
 
+  const setCategories = (categories) => {
+    dispatch({ type: "SET_CATEGORIES", payload: categories });
+  };
+
+  const setShowCategories = (showCategories) => {
+    dispatch({ type: "SET_SHOW_CATEGORIES", payload: showCategories });
+  };
+
   return (
     <GlobalContext.Provider
       value={{
@@ -81,6 +97,10 @@ export const GlobalProvider = (props) => {
         setMovies,
         errorMessage: state.errorMessage,
         setErrorMessage,
+        categories: state.categories,
+        setCategories,
+        showCategories: state.showCategories,
+        setShowCategories,
       }}
     >
       {props.children}

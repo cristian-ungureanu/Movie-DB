@@ -14,6 +14,7 @@ export const Browse = () => {
     page,
     setMovies,
     setErrorMessage,
+    categories,
   } = useContext(GlobalContext);
   const location = useLocation();
   useEffect(() => {
@@ -26,7 +27,10 @@ export const Browse = () => {
       setErrorMessage("");
 
       try {
-        const response = await fetch(`${MOVIE_DISCOVER_ENDPOINT}&page=${page}`);
+        const currentCategories = categories.join("|");
+        const response = await fetch(
+          `${MOVIE_DISCOVER_ENDPOINT}&page=${page}&with_genres=${currentCategories}`,
+        );
         const json = await response.json();
 
         if (!response.ok) {
@@ -44,7 +48,7 @@ export const Browse = () => {
     }
 
     requestMovies();
-  }, [page, query, location]);
+  }, [page, query, location, categories]);
 
   return <>{isLoading ? <Mock /> : <Results />}</>;
 };

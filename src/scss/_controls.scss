@@ -30,6 +30,11 @@
   background-color: $primary-color;
 }
 
+.tab-item:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .navigation {
   display: flex;
   padding: 10px;
@@ -69,6 +74,36 @@
 
 .footer .navigation {
   max-width: 300px;
+}
+
+.filters {
+  
+  .btn {
+    background-color: #fff;
+    border: none;
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 50%;
+    box-shadow: $base-shadow;
+    cursor: pointer;
+    &.active {
+      background-color: $primary-color;
+      color: #fff;
+    }
+  }
+
+  .tabs {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    .tab-item {
+      flex: 0 1 auto;
+      border: none;
+      padding: 10px 20px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+  }
 }
 
 @mixin controls--tablet-sm {

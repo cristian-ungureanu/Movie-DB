@@ -42,6 +42,21 @@ const AppReducer = (state, action) => {
         ...state,
         errorMessage: action.payload,
       };
+    case "SET_CATEGORIES":
+      return {
+        ...state,
+        categories: action.payload,
+      };
+    case "SET_SHOW_FILTERS":
+      return {
+        ...state,
+        showFilters: action.payload,
+      };
+    case "SET_SHOW_CATEGORIES":
+      return {
+        ...state,
+        showCategories: action.payload,
+      };
     default:
       return state;
   }
