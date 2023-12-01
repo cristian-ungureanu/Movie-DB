@@ -6,6 +6,7 @@ import { Browse } from "./Components/Browse";
 import { Favorites } from "./Components/Favorites";
 import Hero from "./Components/Hero";
 import Controls from "./Components/Controls";
+import Pagination from "./Components/Pagination";
 
 const AppWrapper = () => {
   const location = useLocation();
@@ -25,6 +26,9 @@ const AppWrapper = () => {
             <Route path="/" element={<Browse />} />
             <Route path="/favorites" element={<Favorites />} />
           </Routes>
+          <div className="footer">
+            <Pagination />
+          </div>
         </div>
       </div>
     </>

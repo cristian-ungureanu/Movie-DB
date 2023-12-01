@@ -1,58 +1,79 @@
 
 .controls {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .tabs {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .tab-item {
-    flex: 1;
-    text-align: center;
-    padding: 20px 30px;
-    background: #fff;
-    box-shadow: $base-shadow;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 15px;
-    border-radius: 30px;
-    color: #000;
-  }
-  
-  .tab-item.active {
-    color: #fff;
-    background-color: #000;
-  }
-  
-  .navigation {
-    display: flex;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: $base-shadow;
-    border-radius: 30px;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .navigation button {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  align-self: center;
+  padding: 20px 30px;
+  background: #fff;
+  box-shadow: $base-shadow;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 15px;
+  border-radius: $round-border-radius;
+  color: #000;
+}
+
+.tab-item.active {
+  color: #fff;
+  background-color: $primary-color;
+}
+
+.navigation {
+  display: flex;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: $base-shadow;
+  border-radius: $round-border-radius;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation button {
+  border: none;
+  background: none;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  height: 100%;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 18px;
+}
+
+.page-number {
+  display: flex;
+  margin: 0;
+  border-radius: $round-border-radius;
+  padding: 10px 15px;
+  box-shadow: $base-shadow;
+  input {
     border: none;
     background: none;
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-    height: 100%;
-    align-items: center;
-    padding: 0 10px;
+    text-align: center;
     font-size: 18px;
+    min-width: 54px;
   }
+}
 
-  @mixin controls--tablet-sm {
-    .controls {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-  }
+.footer .navigation {
+  max-width: 300px;
+}
+
+@mixin controls--tablet-sm {
+  .controls {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+}

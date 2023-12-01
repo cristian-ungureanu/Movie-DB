@@ -22,35 +22,22 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all $base-transition;
         }
-    }
-
-    .overlay{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        transition: background-color $base-transition, opacity $base-transition;
-        background-color: rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 
     .favorites{
         position: absolute;
-        top: 10px;
+        bottom: -20px;
+        border-radius: 50%;
+        background: $primary-color;
+        box-shadow: $base-shadow;
         right: 10px;
         z-index: 100;
         cursor: pointer;
-        background: none;
+        padding: 10px;
         border: none;
         color: #fff;
         font-size: 24px;
-        transition: all $base-transition;
     }
 
     .content{

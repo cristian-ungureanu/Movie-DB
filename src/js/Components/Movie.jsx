@@ -28,7 +28,7 @@ const Movie = ({ movie, showToastMessage }) => {
             <RiCameraOffLine />
           </div>
         )}
-        <div className="overlay">
+        <>
           {!storedMovie ? (
             <button
               className="favorites"
@@ -52,7 +52,7 @@ const Movie = ({ movie, showToastMessage }) => {
               <TbHeartMinus />
             </button>
           )}
-        </div>
+        </>
       </div>
       <div className="content">
         <h3>{movie.title}</h3>
